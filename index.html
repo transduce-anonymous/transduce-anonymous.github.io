@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>TRANSDUCE AND SPEAK: NEURAL TRANSDUCER FOR TEXT-TO-SPEECH WITH SEMANTIC TOKEN PREDICTION</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156162365-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-156162365-1');
+    </script>
+</head>
+
+<body>
+
+    <!-- Title -->
+    <div class="container" style="max-width:1200px;">
+        <div class='row mt-5 mb-3'>
+            <div class='col text-center'>
+                <p class="h2 font-weight-normal">TRANSDUCE AND SPEAK: NEURAL TRANSDUCER FOR TEXT-TO-SPEECH WITH SEMANTIC TOKEN PREDICTION</p>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="max-width:1200px;">
+        <!-- authors -->
+	    
+	    
+	    
+        <div class='col text-center' style="font-style:italic">
+		<a style="margin: 0 auto;"><span><b>Authors</b>: Blind
+            </div>
+	    
+        <!-- <div class='row text-center h5 font-weight-normal pl-1 pr-1 mb-1'>
+            <a class="col-md-12 col-xs-12 text-dark"><span>Anonymous Authors</span></a>
+        </div> -->
+
+        <!-- affiliations -->
+
+        <!-- <div class='row text-center h5 font-weight-light pl-4 pr-4 mb-4' style="font-style:italic">
+                <span class="col-md-12 col-xs-12 text-dark">Affiliation 1</span>
+            </div> -->
+
+        <!-- picture or gif below the author -->
+        <!-- <div class='row justify-content-center'  style="position: relative; width: 100%;height: 0;padding-bottom: 33%; margin:0">
+                <img 
+                    class="img-fluid rounded mx-auto d-block" 
+                    src="./assets/test1.gif" alt="test1.gif" 
+                    style="position:absolute; width:100%; height:100%; top:0px; left:0px;" 
+                    srcset="./assets/test1.gif "
+                    sizes="(min-width: 768px) 1536px, 100vw"
+                >
+			</div> -->
+
+        <!-- Paper section -->
+        <div class='row text-center'>
+            <!-- thumbnail of paper on left side of abstract -->
+            <div class="col" style="margin-top:20px">
+                <a class="h5" href="" style="margin-left:10px">
+                    <span>[Paper]</span>
+                </a>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <div class='col text-center'>
+                <p class='h2 font-weight-bold '>Abstract</p>
+
+                <div class="container" style="max-width:850px; margin-top: 20px; margin-bottom: 40px">
+                    <p style='line-height:1.3; font-size:large; text-align: justify'>
+                       We introduce a text-to-speech (TTS) framework based on a neural transducer. We use discretized semantic tokens acquired from wav2vec2.0 embeddings, which makes it easy to adopt a neural transducer for the TTS framework enjoying its monotonic alignment constraints. The proposed model first generates aligned semantic tokens using the neural transducer, then synthesizes a speech sample from the semantic tokens using a non-autoregressive (NAR) speech generator. This decoupled framework alleviates the training complexity of TTS and allows each stage to focus on 1) linguistic and alignment modeling and 2) fine-grained acoustic modeling, respectively. Experimental results on the zero-shot adaptation TTS show that the proposed model exceeds the baselines in speech quality and speaker similarity via objective and subjective measures. We also investigate the inference speed and prosody controllability of our proposed model, showing the potential of the neural transducer for TTS frameworks.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Samples -->
+        <div class='col'>
+            <hr>
+            <div class='row text-center'>
+                <div class='col'>
+                    <p class='h2 font-weight-bold '>Zero-Shot Adaptive TTS</p>
+                </div>
+            </div>
+	    <div>
+        <hr>
+            <div class='col text-center'>
+                <div class="container" style="max-width:1300px; margin-top: 20px; margin-bottom: 10px">
+                    </p>                
+                    <p style='line-height:1.3; font-size:large; text-align: justify;'>
+                        The models are trained on LibriTTS (train-clean-100, train-clean-360, train-other-500).<br>
+                        Audio samples are sampled from the test-clean subset, so that the speakers are unseen speakers during training.                       
+                    </p>
+                </div>
+            </div>        
+	    </div>
+        <hr>
+
+            <div style='display: flex; align-content: center;flex-wrap: nowrap;'>
+                <div style='flex: 1;  '>
+                    <div class='row' style='width: 430px; height:60px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'><b>Text</b></p>
+                        <div style='height: 120px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>He turned away from her suddenly and set off across the strand.</i></font></p>
+                        </div>
+                    </div>
+
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>Ground Truth</p>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/1_1089_134691_000048_000000_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>Reference (Prompt)</p>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/1_1089_134691_000048_000000_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>VITS</p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/1_1089_134691_000048_000000_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>VALL-E</p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/1_1089_134691_000048_000000_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'><b>Proposed</b>
+                            </p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/1_1089_134691_000048_000000_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		 </div>
+                
+                <div style='flex: 4;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>We have never understood this sort of objections.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/4_4507_16021_000017_000000_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/4_4507_16021_000017_000000_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/4_4507_16021_000017_000000_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/4_4507_16021_000017_000000_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/4_4507_16021_000017_000000_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>
+        
+                <div style='flex: 4;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>This was at the March election, eighteen fifty five.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/3_7729_102255_000002_000003_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/3_7729_102255_000002_000003_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/3_7729_102255_000002_000003_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/3_7729_102255_000002_000003_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/3_7729_102255_000002_000003_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>
+
+                <div style='flex: 2;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>It did not beckon, or indeed move at all; it was as still as the hand of death.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/2_6930_81414_000014_000003_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/2_6930_81414_000014_000003_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/2_6930_81414_000014_000003_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/2_6930_81414_000014_000003_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/2_6930_81414_000014_000003_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>
+          
+            </div>
+            <hr>
+		
+            <div style='display: flex; align-content: center;flex-wrap: nowrap;'>
+                <div style='flex: 1;  '>
+                    <div class='row' style='width: 430px; height:60px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'><b>Text</b></p>
+                        <div style='height: 120px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>Up in the sick room Zora lay on the little white bed.​</i></font></p>
+                        </div>
+                    </div>
+
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>Ground Truth</p>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/5_1995_1837_000020_000000_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>Reference (Prompt)</p>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/5_1995_1837_000020_000000_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>VITS</p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/5_1995_1837_000020_000000_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'>VALL-E</p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/5_1995_1837_000020_000000_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		    <div class='row' style='width: 430px; height:50px; '>
+                        <div style='height: 60px;'>
+                            <p style='height: 60px; width: 150px; padding: 15px 0; text-align: center;'><b>Proposed</b>
+                            </p>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/5_1995_1837_000020_000000_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		 </div>
+         
+                <div style='flex: 2;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>Yes, she was in love. That is, she had been.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/6_121_127105_000024_000002_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/6_121_127105_000024_000002_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/6_121_127105_000024_000002_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/6_121_127105_000024_000002_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/6_121_127105_000024_000002_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>         
+        
+                <div style='flex: 4;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>The most famous of them all was the overthrow of the island of Atlantis.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/7_2961_961_000004_000034_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/7_2961_961_000004_000034_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/7_2961_961_000004_000034_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/7_2961_961_000004_000034_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/7_2961_961_000004_000034_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>
+
+        
+                <div style='flex: 4;'>
+                    <div class='row' style='width: 280px; height:60px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+			<p style='height: 60px; width: 250px; padding: 15px 0; text-align: center;'><font size=2><i>I must have you to think of through the months and months of loneliness.</i></font></p>
+                        </div>
+                    </div>
+			
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/8_4446_2275_000046_000001_gt.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px; width: 250px; height: 50px'>
+                                <source src="./assets/zero-shot/8_4446_2275_000046_000001_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/8_4446_2275_000046_000001_vits.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/8_4446_2275_000046_000001_valle.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class='row' style='width: 280px; height:50px; '>
+                        <div style='height: 60px;'>
+                        </div>
+                        <div style='height: 60px; '>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 250px; height: 50px '>
+                                <source src="./assets/zero-shot/8_4446_2275_000046_000001_proposed.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+		</div>           
+            </div>
+            <hr>
+
+            <div style='margin-top:40px'>
+                <hr>
+                <div class='row text-center'>
+                    <div class='col'>
+                        <p class='h2 font-weight-bold '>Controllability</p>
+                    </div>
+                </div>
+                
+            <hr>
+            
+            <div class='col text-center'>
+                <div class="container" style="max-width:1300px; margin-top: 20px; margin-bottom: 10px">
+                    <p class='h3', style='line-height:1.3; font-size:1.5em; text-align: justify;'>
+                        <font color="orange"><b>&lt;T2T controllability&gt;</b></font>
+                    </p>                
+                    <p style='line-height:1.3; font-size:large; text-align: justify;'>
+                        We can separately control the T2T stage, and the T2S stage using different reference speech for each stage<br>
+                        We fix the reference speech of T2S stage, and allowed only the neural transducer (T2T) to control the prosody.<br>
+                        - <font color="orange"><b>Duration-related attributes</b></font> (e.g. speech rate, prosody) of <font color="orange"><b>&lt;T2T&gt; reference</b></font> are reflected in the generated speech.<br>
+                        - <font color="green"><b>Acoustic-related attributes</b></font> (e.g. speaker, noise) of <font color="green"><b>&lt;T2S&gt; reference</b></font> are reflected in the generated speech.
+                        <br>
+                    </p>                   
+                </div>
+                <img src="./assets/T2T.JPG", class="center">
+            </div>
+
+            <hr class='hr-dotted'/>            
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>So the children went to work with great alacrity, and put the playthings all away.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_t2s_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_t2t_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_t2t_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_t2t_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_t2t_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_1_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+
+            <hr class='hr-dotted'/>
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>They are chiefly formed from combinations of the impressions made in childhood.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_t2s_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_t2t_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_t2t_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_t2t_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_t2t_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_2_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>           
+            </div>
+
+
+            <hr class='hr-dotted'/>
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>He sat as before, and held on to his red cap which everybody was so anxious to get.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_t2s_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_t2t_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_t2t_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_t2t_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_t2t_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/1_3_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr> 
+            
+            <div class="container" style="max-width:1300px; margin-top: 50px; margin-bottom: 10px">
+            </div>
+            
+            <hr>                
+            <div id='dotted'>
+            <div class='col text-center'>
+                <div class="container" style="max-width:1300px; margin-top: 20px; margin-bottom: 10px">
+                    <p class='h3', style='line-height:1.3; font-size:1.5em; text-align: justify;'>
+                        <font color="green"><b>&lt;T2S controllability&gt;</b></font>
+                    </p>                
+                    <p style='line-height:1.3; font-size:large; text-align: justify;'>
+                        We can separately control the T2T stage, and the T2S stage using different reference speech for each stage<br>
+                        We fix the semantic tokens generated from T2T stage, and allowed only the T2S stage to control the acoustic condition.<br>
+                        - <font color="orange"><b>Duration-related attributes</b></font> (e.g. speech rate, prosody) of <font color="orange"><b>&lt;T2T&gt; reference</b></font> are reflected in the generated speech.<br>
+                        - <font color="green"><b>Acoustic-related attributes</b></font> (e.g. speaker, noise) of <font color="green"><b>&lt;T2S&gt; reference</b></font> are reflected in the generated speech.
+                        <br>
+                    </p>
+                </div>
+                <img src="./assets/T2S.JPG", class="center">
+                
+            </div>
+
+
+            <hr class='hr-dotted'/>            
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>Alexander arrived early, and some twenty odd people dropped in during the course of the afternoon.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_t2t_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_t2s_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_t2s_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_t2s_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_t2s_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_1_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+
+            <hr class='hr-dotted'/>
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>With the seal of the holy Priesthood upon their wedded state, these people believe implicitly in the perpetuity of that relationship on the far side of the grave.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_t2t_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_t2s_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_t2s_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_t2s_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_t2s_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_2_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>           
+            </div>
+
+
+            <hr class='hr-dotted'/>
+            <div class='row' style='margin-top: 20px; margin-bottom: 0px;  margin-left: 4px;'>
+                <p class='h6'><b>Text</b></p>
+            </div>     
+            <div class='row' style='margin-top: 0px; margin-bottom: -10px; margin-left: 4px;'>
+                <p class='h7'><i>There their sad condition evoked for a time general commiseration.</i></p>
+            </div>             
+                <div style='width: 450px; height:60px; margin-bottom: 10px;'>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; text-align: center;'><font color="orange"><b>&lt;T2T&gt; reference</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; margin-bottom: 20px;'>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_t2t_ref.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            <hr>
+
+            <div style='display: flex; align-content: center; '>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 1</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_t2s_ref1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 1</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_gen1.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 2</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_t2s_ref2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 2</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_gen2.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 3</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_t2s_ref3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 3</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_gen3.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>    
+                <div style='flex: 4;  '>
+                    <div class='row' style='width: 280px; height:20px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 0px; text-align: center;'><font color="green"><b>&lt;T2S&gt; reference 4</b></font></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_t2s_ref4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <div class='row' style='width: 280px; height:30px; '>
+                        <p style='height: 20px; width: 280px; padding-top: 10px; text-align: center;'><b>synthesized 4</b></p>
+                    </div>
+                    <div class='row' style='width: 280px; height:40px; '>        
+                        <div style='height: 60px; vertical-align: middle'>
+                            <audio controls controlsList="nodownload"
+                                style='display: inline-block; padding:8px; width: 280px; height: 50px;'>
+                                <source src="./assets/prosody/2_3_gen4.wav" class="img-fluid rounded mx-auto d-block" alt="temp">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <hr> 
+            
+            
+                <!-- Optional JavaScript -->
+                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+</body>
+
+</html>
